@@ -58,8 +58,8 @@ USR = $(XILINX_BASE_PATH)/arm-linux-gnueabihf/libc/usr
 XILINX_INC = $(USR)/include
 XILINX_LIBDIR = $(USR)/lib
 
-XILINX_BASE_PATH=/home/ilyamukh/!projects/build-tools/gcc-linaro-arm-linux-gnueabihf-4.7-2012.11-20121123_linux
-XILINX_OTHER_LIB_BASE_PATH=/home/ilyamukh/!projects/build-tools/prebuilt-libz/linux-armhf
+XILINX_BASE_PATH=$(HOME)/projects/build-tools/gcc-linaro-arm-linux-gnueabihf-4.7-2012.11-20121123_linux
+XILINX_OTHER_LIB_BASE_PATH=$(HOME)/projects/build-tools/prebuilt-libz/linux-armhf
 
 # The pre-processor and compiler options.
 # MY_CFLAGS = -ggdb3 -pipe -O2 -Wall -Wextra -fopenmp -march=native -mfpmath=sse -DLINUX -m64 -std=c++0x
