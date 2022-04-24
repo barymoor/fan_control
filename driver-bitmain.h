@@ -231,7 +231,7 @@ extern unsigned int PHY_MEM_NONCE2_JOBID_ADDRESS;
 #define CHECK_SYSTEM_TIME_GAP           10000           // 10s
 //fan
 #define MINIMORUM_PWM_PERCENT           15
-#define MIN_PWM_PERCENT                 35
+#define MIN_PWM_PERCENT                 20
 #define MAX_PWM_PERCENT                 100
 #define TEMP_INTERVAL                   2   // ??????,??PWM 
 #define PWM_ADJUST_FACTOR               ((100 - MIN_PWM_PERCENT)/(60-35))   // 60???100,35???0
