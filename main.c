@@ -233,13 +233,25 @@ int PID_regulate(context* ctx, int temp)
     return percent;
 }
 
+void json_fix(char* buffer)
+{
+    //  Some firmware has missing comma in bmminer api reply. Need to fix it to make it json parseable
+    char* pos = strstr(buffer, "}{");
+    if (pos == NULL)
+        return;
+    ++pos;
+    memmove(pos+1, pos, strlen(pos)+1);
+    *pos = ',';
+}
+
 int set_fan_speed(context* ctx)
 {
     char buffer[16384];
 
-    bmapi_err_code res = query_bmapi("{\"command\":\"estats\"}", buffer, sizeof(buffer));
+    bmapi_err_code res = query_bmapi("{\"command\":\"stats\"}", buffer, sizeof(buffer)-1);
     if (fill_bmminer_presence(ctx, res) != 0)
         return -1;
+    json_fix(buffer);
     
     if (ctx->is_bmminer_not_detected)
         return 0;

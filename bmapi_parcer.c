@@ -4,13 +4,15 @@
 #include "bmapi_parser.h"
 #include "logger.h"
 
-int get_max_chip_temperature(const char* estats_reply, int* max_temp)
+int get_max_chip_temperature(const char* stats_reply, int* max_temp)
 {
     json_t *root;
     json_error_t error;
     int i;
     
-    root = json_loads(estats_reply, 0, &error);
+    app_log(LOG_DEBUG, "bmminer reply: %s", stats_reply);
+
+    root = json_loads(stats_reply, 0, &error);
     if(!json_is_object(root))
     {
         app_log(LOG_ERR, "bmapi parser: root is not an object!\n");
@@ -26,7 +28,7 @@ int get_max_chip_temperature(const char* estats_reply, int* max_temp)
         return -1;
     }
 
-    stats = json_array_get(stats, 0);
+    stats = json_array_get(stats, 1);
     if(!json_is_object(stats))
     {
         app_log(LOG_ERR, "bmapi parser: stats is not an object!\n");
